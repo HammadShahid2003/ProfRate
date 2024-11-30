@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "658094594081",
+    "project_id": "prof-rate-fefb4",
+    "storage_bucket": "prof-rate-fefb4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:658094594081:android:713e8e9b4a50e65516eb60",
+        "android_client_info": {
+          "package_name": "com.example.profrate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "658094594081-pa4ehei08qb63dsubo3a8qimqmojdspd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIyGSNpyjkoP7ZBdXt50vUOFys7RKsCvI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "658094594081-pa4ehei08qb63dsubo3a8qimqmojdspd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

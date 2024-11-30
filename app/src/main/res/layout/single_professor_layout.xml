@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:background="@drawable/rounded_background"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="12dp">
+
+    <!-- Circular Image View -->
+    <ImageView
+        android:layout_width="42dp"
+        android:layout_height="71dp"
+        android:layout_marginEnd="12dp"
+        android:layout_weight="2"
+        android:background="@drawable/circle_background"
+        android:contentDescription="Profile Image"
+        android:src="@drawable/ic_professor" />
+
+    <!-- Text Container -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="3">
+
+        <!-- Name Text -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_semibold"
+            android:text="Hammad Shahid"
+            android:textColor="#4C27B4"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <!-- Divider Line -->
+<!--        <View-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="1dp"-->
+<!--            android:layout_marginVertical="4dp"-->
+<!--            android:background="@android:color/darker_gray" />-->
+
+        <!-- Title Text -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Assistant Professor UMT"
+            android:textColor="#4C27B4"
+            android:textSize="12sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Rating: 4.8/5"
+            android:textColor="#4C27B4"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+</LinearLayout>
