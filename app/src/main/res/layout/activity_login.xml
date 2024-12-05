@@ -20,6 +20,7 @@
 
     <!-- Email EditText -->
     <EditText
+        android:id="@+id/emailEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -38,6 +39,7 @@
         android:layout_marginTop="16dp">
 
         <EditText
+            android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/edit_text_background"
@@ -49,7 +51,7 @@
             android:textColorHint="@color/gray" />
 
         <ImageView
-            android:id="@+id/visibility_toggle"
+            android:id="@+id/visibility_toggle_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_visibility"
@@ -57,12 +59,11 @@
             android:layout_centerVertical="true"
             android:padding="8dp"
             app:tint="@color/gray" />
-</RelativeLayout>
+    </RelativeLayout>
 
     <!-- Forgot Password Text below Password field -->
-
-    <!-- Login Button -->
     <TextView
+        android:id="@+id/forgotPasswordTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
@@ -73,6 +74,7 @@
         android:textSize="14sp" />
 
     <Button
+        android:id="@+id/loginButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -82,6 +84,7 @@
         android:text="Login"
         android:textColor="@color/white"
         android:textStyle="bold" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -91,11 +94,12 @@
         android:textSize="14sp" />
 
     <LinearLayout
-        android:id="@+id/btnsignupGoogle"
+        android:id="@+id/btnLoginGoogle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/google_icon_background"
+        android:clickable="true"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="12dp">
@@ -113,29 +117,31 @@
             android:textColor="@color/black"
             android:textSize="16sp" />
     </LinearLayout>
+
     <!-- Don't have an account? Signup Text -->
-<LinearLayout
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:orientation="horizontal"
-android:layout_gravity="center"
-android:layout_marginTop="24dp">
-
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_semibold"
-        android:text="Don't have an account? "
-        android:textColor="@color/gray"
-        android:textSize="14sp" />
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="24dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_semibold"
-        android:text="Signup"
-        android:textColor="@color/primaryColor"
-        android:textSize="14sp" />
-</LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Don't have an account? "
+            android:textColor="@color/gray"
+            android:textSize="14sp" />
 
+        <TextView
+            android:id="@+id/signupTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Signup"
+            android:textColor="@color/primaryColor"
+            android:textSize="14sp" />
     </LinearLayout>
+
+</LinearLayout>

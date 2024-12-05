@@ -66,19 +66,25 @@ public class SignupActivity extends AppCompatActivity {
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
+        if(mAuth.getCurrentUser()!=null){
+            Intent i=new Intent(getApplicationContext(),MainActivity.class);
+            startActivity(i);
+            finish();
+        }
+        else {
+            // Initialize Views
+            initializeViews();
 
-        // Initialize Views
-        initializeViews();
+            // Initialize Google Sign-In
+            GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                    .requestIdToken(getString(R.string.default_web_client_id))
+                    .requestEmail()
+                    .build();
+            googleSignInClient = GoogleSignIn.getClient(this, gso);
 
-        // Initialize Google Sign-In
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build();
-        googleSignInClient = GoogleSignIn.getClient(this, gso);
-
-        // Set listeners
-        setViewListeners();
+            // Set listeners
+            setViewListeners();
+        }
     }
 
     private void initializeViews() {
