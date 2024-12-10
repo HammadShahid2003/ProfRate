@@ -41,11 +41,16 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation(libs.recyclerview)
     implementation(libs.firebase.auth)
+    implementation(libs.firebase.firestore)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     implementation(libs.firebase.auth.v2211)
     implementation ("com.github.bumptech.glide:glide:4.16.0")
     implementation("com.google.android.gms:play-services-auth:21.2.0")
+    implementation ("jp.wasabeef:glide-transformations:4.3.0")
+    implementation ("de.hdodenhof:circleimageview:3.1.0")
+    implementation ("com.firebaseui:firebase-ui-firestore:8.0.2")
+    implementation ("com.mikhaellopez:circularimageview:4.3.1")
 
 }

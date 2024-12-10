@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <item
+        android:id="@+id/nav_home"
+        android:title="Home"
+        android:enabled="true"
+        android:icon="@drawable/home_icon"
+        />
+
+    <item
+        android:id="@+id/nav_professor"
+        android:enabled="true"
+        android:title="Professor"
+        android:icon="@drawable/teacher_icon"
+        />
+
+    <item
+        android:id="@+id/nav_university"
+        android:title="University"
+        android:icon="@drawable/university_icon"
+       />
+
+    <item
+        android:id="@+id/nav_post"
+        android:title="Post"
+        android:icon="@drawable/posts_icon"
+         />
+
+    <item
+        android:id="@+id/nav_profile"
+        android:title="Profile"
+        android:icon="@drawable/profile_icon"
+         />
+</menu>

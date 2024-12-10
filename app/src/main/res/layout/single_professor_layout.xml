@@ -1,40 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="20dp"
-    android:layout_marginRight="20dp"
-    android:background="@drawable/rounded_background"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="16dp"
+    app:cardBackgroundColor="#34345F"
+    android:elevation="4dp"
+    android:layout_marginHorizontal="20dp"
+    android:layout_marginVertical="2dp"
+>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:padding="12dp">
+   >
 
     <!-- Circular Image View -->
-    <ImageView
-        android:layout_width="42dp"
-        android:layout_height="71dp"
-        android:layout_marginEnd="12dp"
-        android:layout_weight="2"
-        android:background="@drawable/circle_background"
-        android:contentDescription="Profile Image"
-        android:src="@drawable/ic_professor" />
+<!--    <ImageView-->
+<!--        android:layout_width="42dp"-->
+<!--        android:layout_height="71dp"-->
+<!--        android:layout_marginEnd="12dp"-->
+<!--        android:layout_weight="2"-->
 
+<!--        android:background="@drawable/circle_background"-->
+<!--        android:contentDescription="Profile Image"-->
+<!--        android:src="@drawable/ic_professor"-->
+<!--        android:id="@+id/iv_professor_card_image"/>-->
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/iv_professor_card_image"
+        android:layout_width="90dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_professor"
+        app:civ_border_width="2dp"
+        android:paddingVertical="5dp"
+        android:paddingHorizontal="4dp"
+        app:civ_border_color="#929292"/>
     <!-- Text Container -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_weight="3">
-
+        android:layout_weight="3"
+        android:padding="3dp"
+        >
         <!-- Name Text -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_semibold"
+            android:fontFamily="@font/poppins_semibold"
             android:text="Hammad Shahid"
-            android:textColor="#4C27B4"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="4dp"
+            android:id="@+id/tvprofessor_name"/>
 
         <!-- Divider Line -->
 <!--        <View-->
@@ -44,20 +67,29 @@
 <!--            android:background="@android:color/darker_gray" />-->
 
         <!-- Title Text -->
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="250dp"
+            android:layout_height="2dp"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_semibold"
             android:text="Assistant Professor UMT"
-            android:textColor="#4C27B4"
-            android:textSize="12sp" />
-        <TextView
-            android:layout_width="match_parent"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:paddingVertical="5dp"
+            android:layout_marginLeft="4dp"
+            android:id="@+id/tv_professor_designation"/>
+
+        <RatingBar
+            android:id="@+id/rating_bar"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="Rating: 4.8/5"
-            android:textColor="#4C27B4"
-            android:textSize="12sp" />
+
+            android:progressTint="#F57F17"
+            android:rating="4" />
     </LinearLayout>
 
 </LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -2,8 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="primaryColor">#357DED</color>
+    <color name="primaryColor">#302264</color>
     <color name="gray">#888888</color>
+    <color name="App_background">#0A0A23</color>
+    <color name="colorPrimary">#FFB300</color>
 
 
 </resources>

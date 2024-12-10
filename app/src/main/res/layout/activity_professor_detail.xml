@@ -1,78 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#F8F9FA">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/App_background"
+    android:layout_height="match_parent"
+    tools:context=".ProfessorDetailActivity"
+    >
 
-<!--    &lt;!&ndash; Professor Info Section &ndash;&gt;-->
-<!--    <TextView-->
-<!--        android:id="@+id/tvProfessorName"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
+    <!-- Background (Top Section) -->
+    <View
+        android:id="@+id/top_background"
+        android:layout_width="406dp"
+        android:layout_height="169dp"
+        android:background="@color/App_background"
+        app:layout_constraintBottom_toTopOf="@+id/profile_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-<!--        android:fontFamily="@font/montserrat_semibold"-->
-<!--        android:text="Professor Name"-->
-<!--        android:textColor="#000000"-->
-<!--        android:textSize="24sp"-->
-<!--        android:textStyle="bold"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/tvQualifications"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.27"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/imgProfessor"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.22000003" />-->
+    <!-- Circular Profile Image -->
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="-50dp"
+        android:layout_marginTop="70dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/scroll_section"
+        android:src="@drawable/profile_avatar"
+        android:elevation="5dp" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/tvUniversity"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
+    <!-- Scrollable Bottom Section -->
+    <ScrollView
+        android:id="@+id/scroll_section"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/homescreen_bottombackground"
 
-<!--        android:text="University"-->
-<!--        android:textColor="#555555"-->
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profile_image"
+        tools:layout_editor_absoluteX="0dp">
 
-<!--        android:textSize="16sp"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/tvQualifications"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.16"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/imgProfessor"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/tvProfessorName"-->
-<!--        app:layout_constraintVertical_bias="0.17000002" />-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_marginTop="60dp">
 
-<!--    <ImageView-->
-<!--        android:id="@+id/imgProfessor"-->
-<!--        android:layout_width="100dp"-->
-<!--        android:layout_height="100dp"-->
-<!--        android:layout_marginStart="16dp"-->
-<!--        android:contentDescription="Professor Image"-->
-<!--        android:background="@drawable/circle_background"-->
-<!--        android:scaleType="centerCrop"-->
-<!--        android:src="@drawable/ic_professor"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
+            <!-- Name Text -->
+            <TextView
+                android:id="@+id/name_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Name"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-<!--    &lt;!&ndash; Qualifications &ndash;&gt;-->
-<!--    <TextView-->
-<!--        android:id="@+id/tvQualifications"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Qualifications go here"-->
-<!--        android:textColor="#555555"-->
-<!--        android:textSize="16sp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.18"-->
-<!--        app:layout_constraintMarginEnd="16dp"-->
-<!--        app:layout_constraintMarginStart="16dp"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/imgProfessor" />-->
+                <RatingBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:numStars="5"
+                    android:scaleX="0.8"
+                    android:scaleY="0.8"
+                    android:stepSize="0.5"
+                   android:progressTint="@color/colorPrimary"
+                    android:id="@+id/overallRating"/>
+                <Button
+                    android:id="@+id/btnaddreview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add Review"
+                    android:textColor="@color/white"
+                    android:paddingHorizontal="15dp"
+                    android:layout_marginLeft="20dp"
+                    android:backgroundTint="@color/App_background"/>
+            </LinearLayout>
+            <!-- RecyclerView Placeholder -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_professor_reviews"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical" />
 
-    <!-- Review Section (Similar to the RecyclerView) -->
-<!--    <RecyclerView-->
-<!--        android:id="@+id/recyclerViewReviews"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="0dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/tvQualifications" />-->
+        </LinearLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
