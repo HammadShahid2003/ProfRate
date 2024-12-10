@@ -42,6 +42,7 @@ dependencies {
     implementation(libs.recyclerview)
     implementation(libs.firebase.auth)
     implementation(libs.firebase.firestore)
+    implementation(libs.firebase.database)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
@@ -52,5 +53,10 @@ dependencies {
     implementation ("de.hdodenhof:circleimageview:3.1.0")
     implementation ("com.firebaseui:firebase-ui-firestore:8.0.2")
     implementation ("com.mikhaellopez:circularimageview:4.3.1")
+    implementation ("com.airbnb.android:lottie:3.4.0")
+    implementation("com.firebaseui:firebase-ui-database:8.0.2")
+    implementation("com.squareup.picasso:picasso:2.8")
+    implementation("com.google.android.material:material:1.9.0")
+    implementation("com.cloudinary:cloudinary-android:3.0.2")
 
 }

@@ -113,10 +113,10 @@
                             android:orientation="vertical"
                             android:gravity="center">
 
-                            <de.hdodenhof.circleimageview.CircleImageView
+                            <ImageView
                                 android:layout_width="80dp"
                                 android:layout_height="87dp"
-                                android:src="@drawable/professor_svg"
+                                android:src="@drawable/professor_home_icon"
                                 android:layout_gravity="center_horizontal"/>
 
                             <TextView
@@ -143,16 +143,17 @@
                             android:orientation="vertical"
                             android:gravity="center">
 
-                            <de.hdodenhof.circleimageview.CircleImageView
+                            <ImageView
                                 android:layout_width="80dp"
                                 android:layout_height="87dp"
-                                android:src="@drawable/professor_svg" />
+                                android:src="@drawable/university_home_icon"
+                                android:scaleType="centerCrop"/>
 
                             <TextView
                                 android:id="@+id/tv12"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Professors"
+                                android:text="Universities"
 
                                 android:textAlignment="center"
                                 android:textStyle="bold" />
@@ -174,17 +175,17 @@
                             android:orientation="vertical"
                             android:gravity="center">
 
-                            <de.hdodenhof.circleimageview.CircleImageView
+                            <ImageView
                                 android:layout_width="80dp"
                                 android:layout_height="87dp"
-                                android:src="@drawable/professor_svg"
+                                android:src="@drawable/home_post_icon"
                                 />
 
                             <TextView
                                 android:id="@+id/tv11"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Professors"
+                                android:text="Posts"
 
                                 android:textAlignment="center"
                                 android:textStyle="bold" />
@@ -293,52 +294,52 @@
                                 android:paddingEnd="24dp" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:cardCornerRadius="20dp"
-                        android:layout_marginTop="20dp">
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="horizontal">
+<!--                    <androidx.cardview.widget.CardView-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        app:cardCornerRadius="20dp"-->
+<!--                        android:layout_marginTop="20dp">-->
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:orientation="vertical">-->
+<!--                            <LinearLayout-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="match_parent"-->
+<!--                                android:orientation="horizontal">-->
 
-                                <TextView
+<!--                                <TextView-->
 
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="32dp"
-                                    android:layout_weight="1"
-                                    android:text="Top Professors"
-                                    android:textColor="@color/App_background"
-                                    android:textSize="20sp"
-                                    android:textStyle="bold" />
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginStart="32dp"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:text="Top Posts"-->
+<!--                                    android:textColor="@color/App_background"-->
+<!--                                    android:textSize="20sp"-->
+<!--                                    android:textStyle="bold" />-->
 
-                                <TextView
-                                    android:id="@+id/tvViewAllPosts"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginEnd="32dp"
-                                    android:layout_weight="1"
-                                    android:text="View All"
-                                    android:textAlignment="viewEnd"
-                                    android:textColor="#6200EA"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
+<!--                                <TextView-->
+<!--                                    android:id="@+id/tvViewAllPosts"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginEnd="32dp"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:text="View All"-->
+<!--                                    android:textAlignment="viewEnd"-->
+<!--                                    android:textColor="#6200EA"-->
+<!--                                    android:textStyle="bold" />-->
+<!--                            </LinearLayout>-->
 
-                            <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/rvhome_posts"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:clipToPadding="false"
-                                android:paddingStart="24dp"
-                                android:paddingEnd="24dp" />
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
+<!--                            <androidx.recyclerview.widget.RecyclerView-->
+<!--                                android:id="@+id/rvhome_posts"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:clipToPadding="false"-->
+<!--                                android:paddingStart="24dp"-->
+<!--                                android:paddingEnd="24dp" />-->
+<!--                        </LinearLayout>-->
+<!--                    </androidx.cardview.widget.CardView>-->
 
                 </LinearLayout>
 

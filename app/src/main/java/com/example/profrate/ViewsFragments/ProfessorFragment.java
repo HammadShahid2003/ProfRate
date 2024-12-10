@@ -1,5 +1,6 @@
 package com.example.profrate.ViewsFragments;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -27,6 +28,7 @@ public class ProfessorFragment extends Fragment {
 
     private professor_fragment_adapter adapter;
     RecyclerView recyclerView;
+    private Dialog loaderDialog;
     public ProfessorFragment(){
 
     }
@@ -56,6 +58,12 @@ public class ProfessorFragment extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
     public void onStop() {
         super.onStop();
         if (adapter != null) {
@@ -68,7 +76,12 @@ public class ProfessorFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         recyclerView = view.findViewById(R.id.rvProfessors);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
+        loaderDialog = new Dialog(getContext());
+        loaderDialog.setContentView(R.layout.loader_dialog);
+        loaderDialog.setCancelable(false);
 
+        // Show loader while data is loading
+        showLoader();
         FirestoreRecyclerOptions<Professor> options =
                 new FirestoreRecyclerOptions.Builder<Professor>()
                         .setQuery(FirebaseFirestore.getInstance()
@@ -108,7 +121,18 @@ public class ProfessorFragment extends Fragment {
 //
 //        RecyclerAdapter adapter = new RecyclerAdapter(itemList);
 //        recyclerView.setAdapter(adapter);
+loaderDialog.dismiss();
+    }
+    private void showLoader() {
+        if (loaderDialog != null && !loaderDialog.isShowing()) {
+            loaderDialog.show();
+        }
+    }
 
+    private void hideLoader() {
+        if (loaderDialog != null && loaderDialog.isShowing()) {
+            loaderDialog.dismiss();
+        }
     }
 
 }

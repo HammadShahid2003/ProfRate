@@ -61,8 +61,8 @@
                 android:layout_marginBottom="16dp"
                 android:fontFamily="@font/poppins_semibold"
                 android:text="Name"
-                android:textColor="@color/black"
-                android:textSize="18sp"
+                android:textColor="@color/App_background"
+                android:textSize="20sp"
                 android:textStyle="bold" />
             <LinearLayout
                 android:layout_width="match_parent"
@@ -84,7 +84,7 @@
                     android:layout_height="wrap_content"
                     android:text="Add Review"
                     android:textColor="@color/white"
-                    android:paddingHorizontal="15dp"
+                    android:paddingHorizontal="10dp"
                     android:layout_marginLeft="20dp"
                     android:backgroundTint="@color/App_background"/>
             </LinearLayout>
@@ -94,7 +94,8 @@
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scrollbars="vertical" />
+                android:scrollbars="vertical"
+                android:layout_marginBottom="10dp"/>
 
         </LinearLayout>
     </ScrollView>

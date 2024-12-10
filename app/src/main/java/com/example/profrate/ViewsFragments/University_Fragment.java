@@ -117,7 +117,7 @@ public class University_Fragment extends Fragment {
                     }
                 });
 
-        adapter = new university_card_adapter(options);
+        adapter = new university_card_adapter(options,getContext());
         recyclerView.setAdapter(adapter);
          adapter.startListening();
 

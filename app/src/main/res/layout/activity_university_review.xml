@@ -4,76 +4,84 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UniversityReviewActivity"
-    android:id="@+id/University_page"
     android:orientation="vertical"
-    android:background="@color/App_background">
+    android:background="@color/App_background"
+    tools:context=".UniversityReviewActivity">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/restaurant_review_venue"
+    <!-- Fixed ImageView -->
+    <ImageView
+        android:id="@+id/university_profile_pic"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginTop="30dp"
+        android:layout_height="230dp"
+        android:layout_marginTop="10dp"
         android:src="@drawable/university_icon"
-        android:background="@drawable/homescreen_topbackground"/>
+        android:background="@drawable/homescreen_topbackground" />
 
-    <androidx.cardview.widget.CardView
+    <!-- Scrollable Section -->
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="20dp"
-        android:layout_marginHorizontal="10dp">
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:layout_marginBottom="10dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-    <TextView
-        android:id="@+id/University_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:text="Name"
-        android:textColor="#1A237E"
-        android:textSize="25sp"
-        android:textStyle="bold" />
+            android:orientation="vertical"
+            android:padding="10dp">
 
-    <RatingBar
-        android:id="@+id/ratingBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="20dp"
-        android:scaleX="0.8"
-        android:scaleY="0.8"
-        android:numStars="5"
-        android:stepSize="0.5" />
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="20dp">
 
-    <Button
-        android:id="@+id/add_review"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="@color/colorPrimary"
-        android:text="Add Review"
-        android:textColor="@color/App_background"
-        android:textSize="12sp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/University_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Name"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="#1A237E"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <RatingBar
+                        android:id="@+id/ratingBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="45dp"
+                        android:numStars="5"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
+                        android:progressTint="@color/colorPrimary"
+                        android:stepSize="0.5" />
+
+                    <Button
+                        android:id="@+id/add_review"
+                        android:layout_width="141dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginEnd="20dp"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:text="Add Review"
+                        android:textColor="@color/App_background"
+                        android:textSize="12sp" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/restaurant_reviews_recycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scrollbars="vertical" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="20dp"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="#0097A7"
-        android:layout_marginHorizontal="10dp">
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/restaurant_reviews_recycler"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:scrollbars="vertical"/>
-    </androidx.cardview.widget.CardView>
+    </ScrollView>
 </LinearLayout>

@@ -1,15 +1,19 @@
 package com.example.profrate.ViewsFragments;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.profrate.CompleteProfile;
 import com.example.profrate.R;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -29,9 +33,16 @@ public class ProfileFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    Context context;
 
     public ProfileFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        this.context = context;
     }
 
     /**
@@ -64,8 +75,12 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        View v = inflater.inflate(R.layout.fragment_profile, container, false);
+        AppCompatButton manageProfile = v.findViewById(R.id.manageProfile);
+        manageProfile.setOnClickListener(view -> {
+            startActivity(new Intent(context, CompleteProfile.class));
+        });
+        return v;
     }
 
     @Override

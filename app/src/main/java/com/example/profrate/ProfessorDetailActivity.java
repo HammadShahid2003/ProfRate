@@ -1,11 +1,15 @@
 package com.example.profrate;
 
+import static java.security.AccessController.getContext;
+import com.airbnb.lottie.LottieAnimationView;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,10 +29,14 @@ import com.example.profrate.model.Review;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -44,7 +52,7 @@ public class ProfessorDetailActivity extends AppCompatActivity {
 private Intent intent;
     // Replace with the actual professorId (e.g., passed via Intent)
     private String professorId;
-
+    private Dialog loaderDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +60,12 @@ private Intent intent;
 
         // Initialize Firestore
         firestore = FirebaseFirestore.getInstance();
+        loaderDialog = new Dialog(this);
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.loader_dialog, null);
+        loaderDialog.setContentView(dialogView);
+        LottieAnimationView animationView = dialogView.findViewById(R.id.lottie);
+        animationView.playAnimation();
+        loaderDialog.setCancelable(false);
 
         // Initialize views
         reviewsRecyclerView = findViewById(R.id.rv_professor_reviews);
@@ -61,7 +75,7 @@ private Intent intent;
         intent=getIntent();
         professorId=intent.getStringExtra("professorId");
         profilepic=findViewById(R.id.profile_image);
-
+        loaderDialog.show();
         Glide.with(profilepic.getContext()).load((intent.getStringExtra("professorPicture"))).into(profilepic);
         professorNameText.setText(intent.getStringExtra("professorName"));
 
@@ -70,7 +84,7 @@ private Intent intent;
 
         // Set up FirebaseRecyclerAdapter
         Query query = firestore.collection("Professor")
-                .document("lgKbdVr4ffLRA1r7UJs9")
+                .document(professorId)
                 .collection("reviews")
                 .orderBy("rating") ;
         query.addSnapshotListener(new EventListener<QuerySnapshot>() {
@@ -102,10 +116,11 @@ private Intent intent;
         reviewAdapter.startListening();
 
 
-        addReviewButton.setOnClickListener(v -> openAddReviewDialog());
+        addReviewButton.setOnClickListener(v -> openAddReviewDialog(professorId));
 
         // Calculate and display the professor's overall rating
         calculateOverallRating();
+        loaderDialog.dismiss();
     }
 
     @Override
@@ -127,16 +142,59 @@ private Intent intent;
     /**
      * Opens the dialog to add a new review.
      */
-    private void openAddReviewDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    private void openAddReviewDialog(String professorId) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(ProfessorDetailActivity.this);
 
-        // Inflate the custom layout using LayoutInflater
-        LayoutInflater inflater = this.getLayoutInflater();
+        // Inflate the custom layout
+        LayoutInflater inflater = ProfessorDetailActivity.this.getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.activity_add_review, null);
+
+        // Initialize the views from the dialog
+        RatingBar ratingBar = dialogView.findViewById(R.id.review_rating_bar);
+        EditText reviewEditText = dialogView.findViewById(R.id.review_edit_text);
+        Button submitButton = dialogView.findViewById(R.id.submit_review_button);
 
         // Set the custom layout to the AlertDialog builder
         builder.setView(dialogView);
+        AlertDialog dialog = builder.create();
+
+        // Set submit button click listener
+        submitButton.setOnClickListener(v -> {
+            float rating = ratingBar.getRating();
+            String reviewText = reviewEditText.getText().toString().trim();
+
+            if (rating == 0.0f) {
+                Toast.makeText(ProfessorDetailActivity.this, "Please provide a rating", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // Create a map or object for the review
+            Map<String, Object> review = new HashMap<>();
+            review.put("rating", rating);
+            review.put("reviewText", reviewText);// Add a timestamp
+            loaderDialog.show();
+            // Save to Firestore
+            FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+            firestore.collection("Professor")
+                    .document(professorId)
+                    .collection("reviews")
+                    .add(review)
+                    .addOnSuccessListener(documentReference -> {
+                        Toast.makeText(ProfessorDetailActivity.this, "Review submitted successfully!", Toast.LENGTH_SHORT).show();
+                        reviewAdapter.notifyDataSetChanged();
+                        loaderDialog.dismiss();
+                        dialog.dismiss(); // Close the dialog
+                    })
+                    .addOnFailureListener(e -> {
+                        loaderDialog.dismiss();
+                        Toast.makeText(ProfessorDetailActivity.this, "Failed to submit review. Try again!", Toast.LENGTH_SHORT).show();
+                    });
+        });
+
+        // Show the dialog
+        dialog.show();
     }
+
 
     /**
      * Calculates the overall rating for the professor based on all reviews.
@@ -167,5 +225,16 @@ private Intent intent;
                 .addOnFailureListener(e -> {
                     Toast.makeText(this, "Failed to calculate overall rating.", Toast.LENGTH_SHORT).show();
                 });
+    }
+    private void showLoader() {
+        if (loaderDialog != null && !loaderDialog.isShowing()) {
+            loaderDialog.show();
+        }
+    }
+
+    private void hideLoader() {
+        if (loaderDialog != null && loaderDialog.isShowing()) {
+            loaderDialog.dismiss();
+        }
     }
 }
